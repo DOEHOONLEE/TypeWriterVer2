@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import faker from 'faker';
+
+function PrintWords({ myword }) {
+  return (
+    <div>
+      <p>myword</p>
+    </div>
+  )
+};
 
 function App() {
+
+  const thousandWords = [];
+
+  for (let i=0; i < 200; i++) {
+    thousandWords.push(faker.random.word().split(" ")[0])
+  }
+
+  console.log(thousandWords.map(c => c))
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>{thousandWords[0]}</p>
+      {
+        thousandWords.map(
+          (word, index) => (
+            <p>{word}</p>
+          )
+        )
+      }
     </div>
   );
-}
+};
 
 export default App;
