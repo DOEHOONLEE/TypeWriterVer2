@@ -4,7 +4,9 @@ function WordsPerMin({ count }) {
 
     return (
         <div>
-            <h3>correct words: {count}</h3>
+            <h3>
+                correct words: {count}
+            </h3>
         </div>
     );
 }

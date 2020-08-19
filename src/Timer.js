@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Timer() {
+function Timer({ timeleft }) {
+
     return (
         <div>
-            <h1>Time Remaining 59 sec</h1>
+            
+            {timeleft > 0 ? <h1>Time Remaining : {timeleft}</h1> : <h1>Game Finished</h1>}
+            
         </div>
     );
 }

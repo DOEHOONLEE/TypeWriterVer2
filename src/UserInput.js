@@ -38,6 +38,7 @@ function UserInput() {
         <div>
             <WordDisplay
                 word={randomWord}
+                userInput={userInput}
             />
             <input
                 type="text"
