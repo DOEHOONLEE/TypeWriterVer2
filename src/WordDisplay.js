@@ -1,14 +1,15 @@
 import React from 'react';
+import UserInput from './UserInput';
 
-function WordGenerator({ WordList }) {
+function WordDisplay({ word }) {
     
     return (
         <div>
             <h1>
-                {WordList}
+                {word}
             </h1>
         </div>
     );
 };
 
-export default WordGenerator;
+export default WordDisplay;
