@@ -18,13 +18,20 @@ function UserInput() {
     }
 
     const handleKeyPress = (e) => {
-        if (e.charCode === 13 || e.charCode === 32) {
+        if (e.charCode === 13) {
             if (userInput === randomWord) {
                 setCounter(counter + 1);
-                setRandomWord(getWord);
-                setUserInput('');
+                emptyUserInput();
+            }
+            else {
+                emptyUserInput();
             }
         }
+    }
+    
+    const emptyUserInput = () => {
+        setRandomWord(getWord);
+        setUserInput('');
     }
 
     return(
