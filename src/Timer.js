@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Timer({ timeleft }) {
+function Timer({secLeft}) {
 
     return (
         <div>
             
-            {timeleft > 0 ? <h1>Time Remaining : {timeleft}</h1> : <h1>Game Finished</h1>}
+            {secLeft > 0 ? <h1>Time Remaining : {secLeft}</h1> : <h1>Game Finished</h1>}
             
         </div>
     );

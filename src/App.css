@@ -1,3 +1,7 @@
+* {
+    text-align: center;
+}
+
 html, body {
     overflow-x: hidden;
     overflow-y: hidden;
@@ -5,7 +9,7 @@ html, body {
 
 .gameBoard {
     background-color: #A7EE55;
-    width: 500px;
+    width: 380px;
     height: 600px;
     margin: 0 auto;
     text-align: center;
