@@ -4,9 +4,9 @@ function Timer({secLeft}) {
 
     return (
         <div>
-            
-            {secLeft > 0 ? <h1>Time Remaining : {secLeft}</h1> : <h1>Game Finished</h1>}
-            
+            <h1>
+                    Time Remaining : {secLeft}
+            </h1>
         </div>
     );
 }

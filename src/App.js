@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import WordDisplay from './WordDisplay';
 import UserInput from './UserInput';
 import Timer from './Timer';
 import StartGame from './StartGame';
 import faker, { random } from 'faker';
+import Switch2 from './switch2.ogg';
 import './App.css';
 
 function App() {
@@ -18,15 +19,13 @@ function App() {
 
   const [secLeft, setSecLeft] = useState(60);
 
+  const inputFocus = useRef();
+
   const onChange = (e) => {
       setUserInput(e.target.value);
-    }
-    
-  React.useEffect(() => {
-    if (secLeft > 0) {
-      setTimeout(() => setSecLeft(secLeft - 1), 1000);
-    }
-  });
+      const typingSound = new Audio (Switch2);
+      typingSound.play();
+  }
   
   const handleKeyPress = (e) => {
       if (e.charCode === 13) {
@@ -38,13 +37,23 @@ function App() {
               emptyUserInput();
           }
       }
-  }
+  };
   
   const emptyUserInput = () => {
       setRandomWord(getWord);
       setUserInput('');
-  }
+  };
 
+  const counterReset = () => {
+    setCounter(0);
+  };
+
+  const onStart = () => {
+    emptyUserInput();
+    counterReset();
+    inputFocus.current.focus();
+  };
+  
   return (
     <div className="gameBoard">
       <UserInput
@@ -54,10 +63,12 @@ function App() {
         getWord={getWord}
         randomWord={randomWord}
         handleKeyPress={handleKeyPress}
+        inputFocus={inputFocus}
       />
-      <StartGame />
-      <Timer
-        secLeft={secLeft}
+      <StartGame
+        onStart={onStart}
+        setSecLeft={setSecLeft}
+        empty={emptyUserInput}
       />
     </div>
   );

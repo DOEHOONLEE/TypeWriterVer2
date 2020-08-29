@@ -3,7 +3,7 @@ import WordsPerMin from './WordsPerMin';
 import WordDisplay from './WordDisplay';
 import faker, { random } from 'faker';
 
-function UserInput({ onChange, userInput, counter, getWord, randomWord, handleKeyPress }) {
+function UserInput({ onChange, userInput, counter, getWord, randomWord, handleKeyPress, inputFocus }) {
 
     // const [userInput, setUserInput] = useState('');
 
@@ -45,6 +45,8 @@ function UserInput({ onChange, userInput, counter, getWord, randomWord, handleKe
                 onChange={onChange}
                 value={userInput}
                 onKeyPress={handleKeyPress}
+                ref={inputFocus}
+                autoCapitalize="none"
             />
             <WordsPerMin
                 count={counter}
