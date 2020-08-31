@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/TypeWriterVer2/static/css/main.666a0f50.chunk.css",
-    "main.js": "/TypeWriterVer2/static/js/main.f2311300.chunk.js",
-    "main.js.map": "/TypeWriterVer2/static/js/main.f2311300.chunk.js.map",
+    "main.js": "/TypeWriterVer2/static/js/main.7268deef.chunk.js",
+    "main.js.map": "/TypeWriterVer2/static/js/main.7268deef.chunk.js.map",
     "runtime-main.js": "/TypeWriterVer2/static/js/runtime-main.2a78e62a.js",
     "runtime-main.js.map": "/TypeWriterVer2/static/js/runtime-main.2a78e62a.js.map",
     "static/js/2.75a4e89e.chunk.js": "/TypeWriterVer2/static/js/2.75a4e89e.chunk.js",
     "static/js/2.75a4e89e.chunk.js.map": "/TypeWriterVer2/static/js/2.75a4e89e.chunk.js.map",
     "index.html": "/TypeWriterVer2/index.html",
-    "precache-manifest.83023a61c0957976468568aab1257d22.js": "/TypeWriterVer2/precache-manifest.83023a61c0957976468568aab1257d22.js",
+    "precache-manifest.e3b191f9470e8496f1c7b423141f9f8b.js": "/TypeWriterVer2/precache-manifest.e3b191f9470e8496f1c7b423141f9f8b.js",
     "service-worker.js": "/TypeWriterVer2/service-worker.js",
     "static/css/main.666a0f50.chunk.css.map": "/TypeWriterVer2/static/css/main.666a0f50.chunk.css.map",
     "static/js/2.75a4e89e.chunk.js.LICENSE.txt": "/TypeWriterVer2/static/js/2.75a4e89e.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.2a78e62a.js",
     "static/js/2.75a4e89e.chunk.js",
     "static/css/main.666a0f50.chunk.css",
-    "static/js/main.f2311300.chunk.js"
+    "static/js/main.7268deef.chunk.js"
   ]
 }
