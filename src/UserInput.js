@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import WordsPerMin from './WordsPerMin';
 import WordDisplay from './WordDisplay';
-import faker, { random } from 'faker';
 
 function UserInput({ onChange, userInput, counter, getWord, randomWord, handleKeyPress, inputFocus }) {
 

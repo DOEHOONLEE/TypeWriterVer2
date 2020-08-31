@@ -14,3 +14,10 @@ html, body {
     margin: 0 auto;
     text-align: center;
 }
+
+.historyList {
+    width: 70%;
+    margin: 0 auto;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+}

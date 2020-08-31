@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import WordDisplay from './WordDisplay';
+import React, { useState, useRef } from 'react';
 import UserInput from './UserInput';
-import Timer from './Timer';
 import StartGame from './StartGame';
+import History from './History';
 import faker, { random } from 'faker';
 import Switch2 from './switch2.ogg';
 import './App.css';
@@ -17,7 +16,7 @@ function App() {
 
   const [randomWord, setRandomWord] = useState(getWord);
 
-  const [secLeft, setSecLeft] = useState(60);
+  // const [secLeft, setSecLeft] = useState(60);
 
   const inputFocus = useRef();
 
@@ -38,6 +37,27 @@ function App() {
           }
       }
   };
+
+  const setData = (wpm) => {
+    const today = new Date();
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    const currentDate = (
+        today.getFullYear()
+        + '-'
+        + monthNames[today.getMonth()-1]
+        + '-'
+        + today.getDate()
+        + ' / ('
+        + today.getHours()
+        + ':'
+        + today.getMinutes()
+        + ')'
+    );
+
+    localStorage.setItem(currentDate, wpm);
+  };
   
   const emptyUserInput = () => {
       setRandomWord(getWord);
@@ -49,11 +69,16 @@ function App() {
   };
 
   const onStart = () => {
+    inputFocus.current.focus();
     emptyUserInput();
     counterReset();
-    inputFocus.current.focus();
   };
   
+  const onReset = () => {
+    emptyUserInput();
+    counterReset();
+  };
+
   return (
     <div className="gameBoard">
       <UserInput
@@ -67,9 +92,12 @@ function App() {
       />
       <StartGame
         onStart={onStart}
-        setSecLeft={setSecLeft}
+        onReset={onReset}
         empty={emptyUserInput}
+        setData={setData}
+        counter={counter}
       />
+      <History counter={counter} />
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import UserInput from './UserInput';
 
 function WordDisplay({ word, userInput }) {
     

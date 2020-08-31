@@ -11,19 +11,12 @@ class StartGame extends Component {
         };
         this.timer = this.timer.bind(this);
         this.onStart = this.props.onStart;
+        this.onReset = this.props.onReset;
+        this.setData = this.props.setData;
     }
 
-    // tick() {
-    //     this.interval = setInterval(() => {
-    //         this.setState(prevState => ({
-    //             seconds: prevState.seconds - 1
-    //         }));
-    //     }, 1000);
-    // }
     timer() {
         this.onStart();
-        
-        clearInterval(this.interval);
 
         this.setState({
             ...this.state,
@@ -34,19 +27,27 @@ class StartGame extends Component {
                 if (this.state.seconds > 0 && !this.state.stop) {
                     this.setState(prevNum => ({
                         seconds: prevNum.seconds - 1
-                    }))
+                    }));
+                    console.log(this.props.counter)
                 }
                 else {
+                    const userRecord = this.props.counter;
+
+                    console.log(userRecord);
+                    this.setData(userRecord);
+
                     this.setState({
                         seconds: 60,
                         stop: true
                     });
-                    this.onStart();
+
+                    this.onReset();
+                    clearInterval(this.interval);
                 }
             },
             1000
         );
-    }
+    };
 
     render() {
         return (
