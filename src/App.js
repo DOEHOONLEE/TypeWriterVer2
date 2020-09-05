@@ -20,6 +20,8 @@ function App() {
 
   const inputFocus = useRef();
 
+  const nextID = useRef(1);
+
   const onChange = (e) => {
       setUserInput(e.target.value);
       const typingSound = new Audio (Switch2);
@@ -49,14 +51,16 @@ function App() {
         + monthNames[today.getMonth()-1]
         + '-'
         + today.getDate()
-        + ' / ('
-        + today.getHours()
-        + ':'
-        + today.getMinutes()
-        + ')'
     );
 
-    localStorage.setItem(currentDate, wpm);
+    let scoreInfo = {
+      date: currentDate,
+      record: wpm
+    }
+
+    localStorage.setItem(nextID.current, JSON.stringify(scoreInfo));
+    
+    nextID.current++;
   };
   
   const emptyUserInput = () => {
@@ -97,7 +101,10 @@ function App() {
         setData={setData}
         counter={counter}
       />
-      <History counter={counter} />
+      <History
+        counter={counter}
+        nextID={nextID}
+      />
     </div>
   );
 };

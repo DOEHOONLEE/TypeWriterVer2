@@ -52,7 +52,12 @@ class StartGame extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.timer}> Start Game </button>
+                <button
+                    onClick={this.timer}
+                    className="startButton"
+                >
+                    Start Game
+                </button>
                 <Timer secLeft={this.state.seconds} />
             </div>
         );

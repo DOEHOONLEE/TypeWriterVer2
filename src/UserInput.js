@@ -40,7 +40,9 @@ function UserInput({ onChange, userInput, counter, getWord, randomWord, handleKe
                 userInput={userInput}
             />
             <input
+                className="userInput"
                 type="text"
+                placeholder="click START GAME to play"
                 onChange={onChange}
                 value={userInput}
                 onKeyPress={handleKeyPress}
