@@ -16,8 +16,6 @@ function App() {
 
   const [randomWord, setRandomWord] = useState(getWord);
 
-  // const [secLeft, setSecLeft] = useState(60);
-
   const inputFocus = useRef();
 
   const nextID = useRef(1);

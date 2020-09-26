@@ -65,32 +65,3 @@ class StartGame extends Component {
 }
 
 export default StartGame;
-
-
-
-
-
-
-// import React from 'react';
-
-// function StartGame({ onStart, setSecLeft, secLeft }) {
-
-//     React.useEffect(() => {
-//         if (secLeft > 0) {
-//           setTimeout(() => setSecLeft(secLeft - 1), 1000);
-//         }
-//     });
-
-//     return (
-//         <div>
-            
-//             <button
-//                 onClick={onStart}
-//             >
-//                 START GAME!
-//             </button>
-//         </div>
-//     );
-// }
-
-// export default StartGame;
