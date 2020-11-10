@@ -28,12 +28,10 @@ class StartGame extends Component {
                     this.setState(prevNum => ({
                         seconds: prevNum.seconds - 1
                     }));
-                    console.log(this.props.counter)
                 }
                 else {
                     const userRecord = this.props.counter;
 
-                    console.log(userRecord);
                     this.setData(userRecord);
 
                     this.setState({
