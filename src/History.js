@@ -14,9 +14,10 @@ function History({ counter, nextID }) {
     }
 
     const scoreHistory = [];
+
     for (let i=1; i <= localStorage.length; i++) {
         const scores = {...localStorage};
-        const temp = JSON.parse(scores[i]);
+        const temp = JSON.parse('"scores[i]"');
         scoreHistory.push([temp.date, temp.record])
     }
     
