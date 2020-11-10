@@ -19,11 +19,8 @@ function History({ counter, nextID }) {
         const temp = JSON.parse(scores[i]);
         scoreHistory.push([temp.date, temp.record])
     }
-
-    console.log(scoreHistory);
     
     scoreHistory.sort((a,b) => b[1] - a[1]);
-    console.log(scoreHistory);
 
     return (
         <div>
