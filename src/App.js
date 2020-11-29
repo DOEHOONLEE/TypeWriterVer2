@@ -23,8 +23,6 @@ function App() {
 
   const inputFocus = useRef();
 
-  // const nextID = useRef(1);
-
   const onChange = (e) => {
       setUserInput(e.target.value);
       const typingSound = new Audio (Switch2);
@@ -49,7 +47,6 @@ function App() {
     const date = `${today.getFullYear()}.${today.toLocaleString('default', { month: 'short' })}.${today.getDate()}-${today.getHours()}:${today.getMinutes()}`;
     const record = wpm;
     const nextId = histories.length > 0 ? Math.max(...histories.map(c => c.id)) + 1 : 0;
-    console.log(histories);
 
     const newRecord = {
       id: nextId,
@@ -57,9 +54,7 @@ function App() {
       record: wpm,
     };
 
-    console.log(newRecord);
     setHistories([...histories, newRecord]);
-    console.log(histories)
   };
   
   const emptyUserInput = () => {

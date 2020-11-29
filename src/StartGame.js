@@ -6,7 +6,7 @@ class StartGame extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            seconds: 5,
+            seconds: 60,
             stop: true
         };
         
@@ -17,7 +17,7 @@ class StartGame extends Component {
     }
 
     gamecheck() {
-        if (this.state.seconds < 5) {
+        if (this.state.seconds < 60) {
             alert("You are already in a game!");
         }
         else {
@@ -45,14 +45,13 @@ class StartGame extends Component {
                     this.setData(userRecord);
 
                     this.setState({
-                        seconds: 5,
+                        seconds: 60,
                         stop: true
                     });
 
                     this.onReset();
                     clearInterval(this.interval);
                 }
-                console.log(this.state.seconds)
             },
             1000
         );
