@@ -1,14 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Scores({ date, wpm, index }) {
-    return (
-        <h3 className="historyList highlight">
-            {index+1}. &nbsp; {date} [{wpm} WPM]
-        </h3>
-    )
-}
-
 const HistoryContainer = styled.div`
     display: flex;
     justify-content: space-between;
@@ -23,8 +15,6 @@ const HistoryContainer = styled.div`
 function History({ histories }) {
     
     const obj_deserialized = JSON.parse(localStorage.getItem("records"));
-
-    console.log(obj_deserialized);
 
     return (
         <div>
