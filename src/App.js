@@ -44,7 +44,7 @@ function App() {
   const setData = (wpm) => {
     const today = new Date();
 
-    const date = `${today.getFullYear()}.${today.toLocaleString('default', { month: 'short' })}.${today.getDate()}-${today.getHours()}:${today.getMinutes()}`;
+    const date = `${today.getFullYear()}.${today.toLocaleString('default', { month: 'short' })}.${today.getDate()} - [${today.getHours()}:${today.getMinutes()}]`;
     const record = wpm;
     const nextId = histories.length > 0 ? Math.max(...histories.map(c => c.id)) + 1 : 0;
 
