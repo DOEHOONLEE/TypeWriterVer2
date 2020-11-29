@@ -5,6 +5,7 @@ import History from './History';
 import faker, { random } from 'faker';
 import Switch2 from './switch2.ogg';
 import './App.css';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
 
@@ -16,9 +17,13 @@ function App() {
 
   const [randomWord, setRandomWord] = useState(getWord);
 
+  const [histories, setHistories] = useLocalStorage("records", []);
+
+  const { date, record } = histories;
+
   const inputFocus = useRef();
 
-  const nextID = useRef(1);
+  // const nextID = useRef(1);
 
   const onChange = (e) => {
       setUserInput(e.target.value);
@@ -40,25 +45,21 @@ function App() {
 
   const setData = (wpm) => {
     const today = new Date();
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    const currentDate = (
-        today.getFullYear()
-        + '-'
-        + monthNames[today.getMonth()-1]
-        + '-'
-        + today.getDate()
-    );
+    const date = `${today.getFullYear()}.${today.toLocaleString('default', { month: 'short' })}.${today.getDate()}-${today.getHours()}:${today.getMinutes()}`;
+    const record = wpm;
+    const nextId = histories.length > 0 ? Math.max(...histories.map(c => c.id)) + 1 : 0;
+    console.log(histories);
 
-    let scoreInfo = {
-      date: currentDate,
-      record: wpm
-    }
+    const newRecord = {
+      id: nextId,
+      date: date,
+      record: wpm,
+    };
 
-    localStorage.setItem(nextID.current, JSON.stringify(scoreInfo));
-    
-    nextID.current++;
+    console.log(newRecord);
+    setHistories([...histories, newRecord]);
+    console.log(histories)
   };
   
   const emptyUserInput = () => {
@@ -100,8 +101,7 @@ function App() {
         counter={counter}
       />
       <History
-        counter={counter}
-        nextID={nextID}
+        histories={histories}
       />
     </div>
   );

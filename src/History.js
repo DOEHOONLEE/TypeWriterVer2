@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 function Scores({ date, wpm, index }) {
     return (
@@ -8,20 +9,22 @@ function Scores({ date, wpm, index }) {
     )
 }
 
-function History({ counter, nextID }) {
-    const getData = () => {
+const HistoryContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 330px;
+    height: 30px;
+    font-size: 21px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid grey;
+`;
 
-    }
-
-    const scoreHistory = [];
-
-    for (let i=1; i <= localStorage.length; i++) {
-        const scores = {...localStorage};
-        const temp = JSON.parse('"scores[i]"');
-        scoreHistory.push([temp.date, temp.record])
-    }
+function History({ histories }) {
     
-    scoreHistory.sort((a,b) => b[1] - a[1]);
+    const obj_deserialized = JSON.parse(localStorage.getItem("records"));
+
+    console.log(obj_deserialized);
 
     return (
         <div>
@@ -29,16 +32,12 @@ function History({ counter, nextID }) {
                 Ranking History
             </h2>
             {
-                scoreHistory.map(
-                    (eachScore, index) => (
-                        <Scores
-                            date={eachScore[0]}
-                            wpm={eachScore[1]}
-                            key={index}
-                            index={index}
-                        />
-                    )
-                )
+                histories.map(c => (
+                    <HistoryContainer key={c.id}>
+                        <span>{c.date}</span>
+                        <span>{c.record} (WPM)</span>
+                    </HistoryContainer>
+                ))
             }
         </div>
     )

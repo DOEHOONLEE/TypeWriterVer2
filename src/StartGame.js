@@ -6,13 +6,23 @@ class StartGame extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            seconds: 60,
+            seconds: 5,
             stop: true
         };
-        this.timer = this.timer.bind(this);
+        
+        this.gamecheck = this.gamecheck.bind(this);
         this.onStart = this.props.onStart;
         this.onReset = this.props.onReset;
         this.setData = this.props.setData;
+    }
+
+    gamecheck() {
+        if (this.state.seconds < 5) {
+            alert("You are already in a game!");
+        }
+        else {
+            this.timer();
+        }
     }
 
     timer() {
@@ -35,13 +45,14 @@ class StartGame extends Component {
                     this.setData(userRecord);
 
                     this.setState({
-                        seconds: 60,
+                        seconds: 5,
                         stop: true
                     });
 
                     this.onReset();
                     clearInterval(this.interval);
                 }
+                console.log(this.state.seconds)
             },
             1000
         );
@@ -51,10 +62,10 @@ class StartGame extends Component {
         return (
             <div>
                 <button
-                    onClick={this.timer}
+                    onClick={this.gamecheck}
                     className="startButton"
                 >
-                    Start Game
+                    Start
                 </button>
                 <Timer secLeft={this.state.seconds} />
             </div>
