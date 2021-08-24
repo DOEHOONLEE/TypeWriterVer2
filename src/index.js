@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { bindActionCreators } from 'redux';
-import { updateClock, updateCorrectWords, updateMistakenWords, updateUserInput, updateWord } from './reducers/gameState'
+import { updateReady, updateCorrectWords, updateMistakenWords, updateUserInput, updateWord } from './reducers/gameState'
 import store from './store.js';
 import { Provider } from 'react-redux';
 
-const actions = bindActionCreators({ updateClock, updateCorrectWords, updateMistakenWords, updateUserInput, updateWord }, store.dispatch);
+const actions = bindActionCreators({ updateReady, updateCorrectWords, updateMistakenWords, updateUserInput, updateWord }, store.dispatch);
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <App
-        updateClock={actions.updateClock}
+        updateReady={actions.updateReady}
         updateCorrectWords={actions.updateCorrectWords}
         updateMistakenWords={actions.updateMistakenWords}
         updateUserInput={actions.updateUserInput}
