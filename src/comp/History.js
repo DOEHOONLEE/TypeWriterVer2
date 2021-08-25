@@ -13,8 +13,12 @@ const HistoryContainer = styled.div`
 `;
 
 function History({ histories }) {
-    
+    console.log(localStorage.getItem("records"))
     const obj_deserialized = JSON.parse(localStorage.getItem("records"));
+
+    const recordsSorted = [...obj_deserialized].sort((a,b) => b.record - a.record);
+
+    console.log(recordsSorted)
 
     return (
         <div>
@@ -22,7 +26,7 @@ function History({ histories }) {
                 Ranking History
             </h2>
             {
-                histories.map(c => (
+                recordsSorted.map(c => (
                     <HistoryContainer key={c.id}>
                         <span>{c.date}</span>
                         <span>{c.record} (WPM)</span>
