@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { updateCorrectWords } from '../reducers/gameState';
 
 const TimerStyle = {
     display: 'inline-block',
@@ -7,11 +8,11 @@ const TimerStyle = {
     right: '10px'
 }
 
-function Timer({ isReady, userInput, updateReady }) {
-    const [timer, setTimer] = useState(10);
+function Timer({ isReady, userInput, UpdateCorrectWords, updateMistakenWords, updateReady }) {
+    const [timer, setTimer] = useState(3);
     
-     const tick = () => {
-        if (timer > 0) {
+    const tick = () => {
+        if (!isReady) {
             setTimer(prev => prev-=1);
         }
         else {
@@ -20,20 +21,21 @@ function Timer({ isReady, userInput, updateReady }) {
     }
 
     useEffect(() => {
-        if (!isReady) {
-            const clock = setInterval(() => tick(), 1000);
-            return () => clearInterval(clock);
-        }
-    })
-
-    console.log("NOT WORKING??")
-    useEffect(() => {
-        setTimer(10);
-    }, [isReady])
-
-    useEffect(() => {
-        
-    }, [userInput])
+        const countDown = setInterval(() => {
+            if (timer > 0 && !isReady) {
+                console.log(timer)
+                setTimer(prev => prev - 1);
+            }
+            else {
+                setTimer(10)
+                clearInterval(countDown);
+                updateReady(true);
+                updateCorrectWords("reset");
+                updateMistakenWords("reset");
+            }
+        }, 1000);
+        return () =>  clearInterval(countDown);
+    }, [isReady, timer])
 
     return (
         <div style={TimerStyle}>

@@ -12,31 +12,35 @@ import StartGame from './comp/StartGame';
 import { connect } from 'react-redux'
 import { updateReady } from './reducers/gameState';
 
-const randomWord = faker.random.word().toLowerCase().split(" ")[0];
-
 function App(props) {
 
   const inputFocus = useRef();
 
+  const { getRandomWord, userInput, correctWords, mistakes, updateReady, isReady, updateCorrectWords, updateMistakenWords } = props;
+
+  const isSpellCorrect = getRandomWord.includes(userInput) ? true : false;
+
   return (
     <div className="gameBoard">
       <WordDisplay
-        randomWord={props.randomWord}
-        userInput={props.userInput} />
+        getRandomWord={getRandomWord}
+        isSpellCorrect={isSpellCorrect} />
       <UserInput
         inputFocus={inputFocus}
         props={props} />
       <Record
-        correct={props.correctWords}
-        mistakes={props.mistakes} />
+        correct={correctWords}
+        mistakes={mistakes} />
       <Timer
-        isReady={props.isReady}
-        userInput={props.userInput}
-        updateReady={props.updateReady} />
+        isReady={isReady}
+        userInput={userInput}
+        updateCorrectWords={updateCorrectWords}
+        updateMistakenWords={updateMistakenWords}
+        updateReady={updateReady} />
       <StartGame
         inputFocus={inputFocus}
-        isReady={props.isReady}
-        updateReady={props.updateReady} />
+        isReady={isReady}
+        updateReady={updateReady} />
       {/* <History /> */}
     </div>
   );

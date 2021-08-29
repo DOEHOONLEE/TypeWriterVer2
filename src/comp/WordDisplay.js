@@ -1,11 +1,10 @@
-import React from 'react';
-import faker, { random } from 'faker';
+import React, { useEffect } from 'react';
 
-function WordDisplay({ randomWord, userInput }) {
-        
+function WordDisplay({ isSpellCorrect, getRandomWord }) {
+    
     return (
         <div>
-            {!randomWord.includes(userInput) ? <h1 style={{color: "hotpink"}}>{randomWord}</h1> : <h1>{randomWord}</h1>}
+            {isSpellCorrect ? <h1>{getRandomWord}</h1> : <h1 style={{color: "hotpink"}}>{getRandomWord}</h1>}
         </div>
     );
 };

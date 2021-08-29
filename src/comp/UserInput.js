@@ -13,7 +13,7 @@ const userInputStyle = {
 
 function UserInput({ inputFocus, props }) {
     
-    const { randomWord, userInput, updateUserInput, updateWord, updateCorrectWords, updateMistakenWords } = props;
+    const { getRandomWord, userInput, updateUserInput, updateWord, updateCorrectWords, updateMistakenWords } = props;
 
     const updateInput = (e) => {
         updateUserInput(e.target.value);
@@ -21,12 +21,13 @@ function UserInput({ inputFocus, props }) {
 
     const onKeyPress = (e) => {
         if (e.charCode === 13) {
-            if (randomWord === userInput) {
+            if (getRandomWord === userInput) {
                 updateCorrectWords();
             } else {
                 updateMistakenWords();
             }
             const newRandom = faker.random.word().toLowerCase().split(" ")[0];
+            
             updateUserInput("");
             updateWord(newRandom);
         }
