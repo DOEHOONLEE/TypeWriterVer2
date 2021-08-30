@@ -16,7 +16,7 @@ function App(props) {
 
   const inputFocus = useRef();
 
-  const { getRandomWord, userInput, correctWords, mistakes, updateReady, isReady, updateCorrectWords, updateMistakenWords } = props;
+  const { updateGame, getRandomWord, userInput, correctWords, mistakes, updateReady, isReady, updateCorrectWords, updateMistakenWords, histories } = props;
 
   const isSpellCorrect = getRandomWord.includes(userInput) ? true : false;
 
@@ -34,14 +34,16 @@ function App(props) {
       <Timer
         isReady={isReady}
         userInput={userInput}
-        updateCorrectWords={updateCorrectWords}
-        updateMistakenWords={updateMistakenWords}
-        updateReady={updateReady} />
+        updateReady={updateReady}
+        correct={correctWords}
+        mistakes={mistakes}
+        updateGame={updateGame} />
       <StartGame
         inputFocus={inputFocus}
         isReady={isReady}
         updateReady={updateReady} />
-      {/* <History /> */}
+      <History
+        histories={histories} />
     </div>
   );
 };

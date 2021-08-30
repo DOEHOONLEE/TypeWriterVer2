@@ -8,17 +8,8 @@ const TimerStyle = {
     right: '10px'
 }
 
-function Timer({ isReady, userInput, UpdateCorrectWords, updateMistakenWords, updateReady }) {
+function Timer({ isReady, userInput, updateReady, correct, mistakes, updateGame }) {
     const [timer, setTimer] = useState(3);
-    
-    const tick = () => {
-        if (!isReady) {
-            setTimer(prev => prev-=1);
-        }
-        else {
-            updateReady(true);
-        }
-    }
 
     useEffect(() => {
         const countDown = setInterval(() => {
@@ -29,9 +20,17 @@ function Timer({ isReady, userInput, UpdateCorrectWords, updateMistakenWords, up
             else {
                 setTimer(10)
                 clearInterval(countDown);
-                updateReady(true);
-                updateCorrectWords("reset");
-                updateMistakenWords("reset");
+                const gameReset = {
+                    correctWords: 0,
+                    mistakes: 0,
+                    userInput: "",
+                    timeRemaining: 60,
+                    isReady: true,
+                }
+
+                const gameRecord = `correct: ${correct} || mistakes: ${mistakes}`
+
+                updateGame(gameReset, gameRecord)
             }
         }, 1000);
         return () =>  clearInterval(countDown);
